@@ -13,6 +13,10 @@ var velocity = Vector2.ZERO
 onready var animatedSprite = $AnimatedSprite
 
 
+func _ready():
+	animatedSprite.frames = load("res://game/sprite frames/GreenCharacter.tres")
+
+
 func _physics_process(delta):
 	apply_gravity()
 	var input = Vector2.ZERO
