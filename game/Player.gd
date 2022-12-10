@@ -55,6 +55,7 @@ func _physics_process(delta):
 
 func apply_gravity():
 	velocity.y += GRAVITY
+	velocity.y = min(velocity.y, 300)
 
 
 func apply_friction():
