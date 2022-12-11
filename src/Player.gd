@@ -10,6 +10,11 @@ onready var animatedSprite = $AnimatedSprite
 
 func _ready():
 	animatedSprite.frames = load("res://src/resources/GreenCharacter.tres")
+	moveData = load("res://src/resources/DefaultMovementData.tres")
+
+
+func power_up():
+	moveData = load("res://src/resources/FastPlayerMovementData.tres")
 
 
 func _physics_process(delta):

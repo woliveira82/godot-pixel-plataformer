@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/characters_packed.png" type="Texture" id=2]
-[ext_resource path="res://src/resources/PlayerMovementData.tres" type="Resource" id=3]
+[ext_resource path="res://src/resources/FastPlayerMovementData.tres" type="Resource" id=3]
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 2 )
