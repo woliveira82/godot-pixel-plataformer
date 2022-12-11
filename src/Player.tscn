@@ -1,26 +1,32 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/characters_packed.png" type="Texture" id=1]
-[ext_resource path="res://game/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/characters_packed.png" type="Texture" id=2]
+[ext_resource path="res://src/resources/PlayerMovementData.tres" type="Resource" id=3]
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 24, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 24, 0, 24, 24 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 1 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 24, 24 )
-
-[sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 1 )
-region = Rect2( 24, 0, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ SubResource( 6 ) ],
+"loop": false,
+"name": "Jump",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 3 ) ],
 "loop": false,
 "name": "Idle",
@@ -30,11 +36,6 @@ animations = [ {
 "loop": true,
 "name": "Run",
 "speed": 5.0
-}, {
-"frames": [ SubResource( 6 ) ],
-"loop": false,
-"name": "Jump",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -42,7 +43,8 @@ extents = Vector2( 6, 8.5 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
-script = ExtResource( 2 )
+script = ExtResource( 1 )
+moveData = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )

@@ -12,16 +12,22 @@ _global_script_classes=[ {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://game/Player.gd"
+"path": "res://src/Player.gd"
+}, {
+"base": "Resource",
+"class": "PlayerMovementData",
+"language": "GDScript",
+"path": "res://src/utils/PlayerMovementData.gd"
 } ]
 _global_script_class_icons={
-"Player": ""
+"Player": "",
+"PlayerMovementData": ""
 }
 
 [application]
 
 config/name="Godot-pixel-plataformer"
-run/main_scene="res://game/World.tscn"
+run/main_scene="res://src/World.tscn"
 config/icon="res://icon.png"
 
 [display]
