@@ -4,8 +4,10 @@ class_name Player
 export(Resource) var moveData
 
 var velocity = Vector2.ZERO
+enum { MOVE, CLIMB }
 
 onready var animatedSprite = $AnimatedSprite
+onready var ladderCheck = $LadderCheck
 
 
 func _ready():
@@ -18,9 +20,26 @@ func power_up():
 
 
 func _physics_process(delta):
-	apply_gravity()
 	var input = Vector2.ZERO
-	input.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input.x = Input.get_axis("ui_left", "ui_right")
+	input.y = Input.get_axis("ui_up", "ui_down")
+	
+	if is_on_ladder():
+		climb_state(input)
+
+	else:
+		move_state(input)
+
+
+func is_on_ladder():
+	if not ladderCheck.is_colliding(): return false
+	var collider = ladderCheck.get_collider()
+	if not collider is Ladder: return false
+	return true
+
+
+func move_state(input):
+	apply_gravity()
 	
 	if input.x == 0:
 		apply_friction()
@@ -48,6 +67,11 @@ func _physics_process(delta):
 	if is_on_floor() and was_in_air:
 		animatedSprite.animation = "Run"
 		animatedSprite.frame = 1
+
+
+func climb_state(input):
+	velocity = input * 50
+	velocity = move_and_slide(velocity, Vector2.UP)
 
 
 func apply_gravity():
