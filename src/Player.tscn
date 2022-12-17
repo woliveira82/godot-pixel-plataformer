@@ -22,9 +22,6 @@ flip_h = true
 position = Vector2( 0, 3.5 )
 shape = SubResource( 1 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
-
 [node name="LadderCheck" type="RayCast2D" parent="."]
 position = Vector2( 0, -5 )
 enabled = true
@@ -39,6 +36,8 @@ one_shot = true
 [node name="JumpCoyoteTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_JumpBufferTimer_timeout"]
 [connection signal="timeout" from="JumpCoyoteTimer" to="." method="_on_JumpCoyoteTimer_timeout"]

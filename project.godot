@@ -36,6 +36,10 @@ config/name="Godot-pixel-plataformer"
 run/main_scene="res://src/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+SoundPlayer="*res://src/utils/SoundPlayer.tscn"
+
 [display]
 
 window/size/width=320
