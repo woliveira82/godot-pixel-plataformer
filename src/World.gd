@@ -12,8 +12,10 @@ var player_spawn_location = Vector2.ZERO
 func _ready():
 	VisualServer.set_default_clear_color(Color.lightblue)
 	player.connect_camera(camera)
-	Events.connect("player_died", self, "_on_player_died")
 	player_spawn_location = player.global_position
+	Events.connect("player_died", self, "_on_player_died")
+	Events.connect("hit_checkpoint", self, "_on_hit_checkpoint")
+	
 
 
 func _on_player_died():
@@ -23,3 +25,7 @@ func _on_player_died():
 	new_player.global_position = player_spawn_location
 	add_child(new_player)
 	new_player.connect_camera(camera)
+
+
+func _on_hit_checkpoint(checkpoint_location):
+	player_spawn_location = checkpoint_location

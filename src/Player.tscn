@@ -14,17 +14,18 @@ script = ExtResource( 1 )
 moveData = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -12 )
 frames = ExtResource( 2 )
 animation = "Jump"
 playing = true
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 3.5 )
+position = Vector2( 0, -8.5 )
 shape = SubResource( 1 )
 
 [node name="LadderCheck" type="RayCast2D" parent="."]
-position = Vector2( 0, -5 )
+position = Vector2( 0, -17 )
 enabled = true
 cast_to = Vector2( 0, 16 )
 collide_with_areas = true
@@ -39,6 +40,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2( 0, -12 )
 
 [connection signal="timeout" from="JumpBufferTimer" to="." method="_on_JumpBufferTimer_timeout"]
 [connection signal="timeout" from="JumpCoyoteTimer" to="." method="_on_JumpCoyoteTimer_timeout"]
