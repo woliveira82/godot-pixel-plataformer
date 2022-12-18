@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/characters_packed.png" type="Texture" id=1]
 [ext_resource path="res://src/utils/HitBox.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/MovingSpikeEnemy.gd" type="Script" id=3]
+
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array(  )
+}
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 9.0
@@ -69,10 +74,12 @@ tracks/1/keys = {
 }
 
 [node name="MovingSpikeEnemy" type="Path2D"]
+curve = SubResource( 7 )
 script = ExtResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 rotate = false
+loop = false
 
 [node name="Enemy" type="Node2D" parent="PathFollow2D"]
 
