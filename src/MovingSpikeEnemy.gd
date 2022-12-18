@@ -13,7 +13,7 @@ onready var animationPlayer = $AnimationPlayer
 
 func _ready():
 	match animation_type:
-		ANIMATION_TYPE.LOOP: animationPlayer.play("MoveAlongPathBounce")
+		ANIMATION_TYPE.LOOP: animationPlayer.play("MoveAlongPathLoop")
 		ANIMATION_TYPE.BOUCE: animationPlayer.play("BounceAlongPathBounce")
 	
 	animationPlayer.playback_speed = speed

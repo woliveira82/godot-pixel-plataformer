@@ -86,12 +86,14 @@ func move_state(input):
 
 func player_die():
 	SoundPlayer.play_sound(SoundPlayer.HURT)
+	Events.emit_signal("player_died")
 	queue_free()
 
 
 func connect_camera(camera):
 	var camera_path = camera.get_path()
 	remoteTransform2D.remote_path = camera_path
+
 
 func can_jump():
 	return is_on_floor() or coyote_jump
