@@ -2,8 +2,38 @@ extends Area2D
 
 export(String, FILE, "*.tscn") var target_level_path = ""
 
+var player = null
+
+
+func _process(delta):
+	if not player: return
+	
+	if not player.is_on_floor(): return
+	
+	if Input.is_action_just_pressed("ui_up"):
+		go_to_next_room()
+
+
+func go_to_next_room():
+	if target_level_path.empty(): return
+	
+	Transition.play_exit_transition()
+	get_tree().paused = true
+	yield(Transition,"animation_completed")
+	Transition.play_enter_transition()
+	get_tree().paused = false
+	get_tree().change_scene(target_level_path)
+
 
 func _on_Door_body_entered(body):
 	if not body is Player: return
+	
+	body.on_door = true
+	player = body
 
-	get_tree().change_scene(target_level_path)
+
+func _on_Door_body_exited(body):
+	if not body is Player: return
+	
+	body.on_door = false
+	player = null
